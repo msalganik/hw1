@@ -6,12 +6,15 @@ output: html_document
 ---
 
 (@) **Please calculate 2+2 in the space below.**
+
 ```{r}
 2+2
 ```
 
 ### Set-up the soccer data
+
 Let's load in the soccer data and dplyr:
+
 ```{r}
 suppressPackageStartupMessages(library(dplyr))
 load(url("http://www.princeton.edu/~mjs3/soc504_s2015/CrowdstormingDataJuly1st.RData"))
@@ -153,7 +156,7 @@ gapminder %>%
   summarise(life.exp.var = var(lifeExp))
 ```
 
-(@openq) **Challenge problem: Create a question that will require you to use all 5 `dplyr` verbs: `filter`, `arrange`, `select`, `mutate`, and `summarise`.**
+(@openq) **Optional challenge: Create a question that will require you to use all 5 `dplyr` verbs: `filter`, `arrange`, `select`, `mutate`, and `summarise`.**
 
 [ your text here; optional ]
 
@@ -162,7 +165,6 @@ gapminder %>%
 ```{r}
 # your code here; optional
 ```
-
 
 ## More practice with data structures
 
