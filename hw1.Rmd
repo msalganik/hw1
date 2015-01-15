@@ -1,0 +1,91 @@
+---
+title: "Homework 1: Manipulating data"
+author: "[your name here]"
+date: Due 2015-02-05
+output: html_document
+---
+
+(@) **Please calculate 2+2 in the space below.**
+```{r}
+2+2
+```
+
+## Set-up the soccer data
+Let's load in the soccer data and dplyr:
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+load(url("http://www.princeton.edu/~mjs3/soc504_s2015/CrowdstormingDataJuly1st.RData"))
+soccer.data <- tbl_df(soccer.data)
+```
+
+### A robustness check 
+
+In lab, we calculated the rate of red cards for players of different skin tone.  Now, we are going to see how robust our conclusions were some choices that we made in the analysis.  In particular, it is important to know that in soccer there are actually two ways to get a red card: a direct red card and getting two yellow cards (which equals one red card).
+
+(@directreds) **Create a table like the one were made in lab where the outcome of interest is rate of direct red cards.**
+
+```{r}
+# [ your code here ]
+```
+
+(@allreds) **Imagine that you submitted the table above in a paper (Of course, in a real paper you would create a graph, but we have not learned `ggplot2` yet.) Create a table like the one above but where the outcome of interest is rate of all forms of red cards (direct red cards + two yellow cards).**
+
+```{r}
+# [ your code here ]
+```
+
+(@) In words, compare your answers in questions @directreds and @allreds.  Do this choice make a difference?
+
+[ your text here ]
+
+### Looking at subsets of the data, by country
+
+Imagine that you have presented these results at ASA, and an audience member speculated the relationship between skin tone and red cards would be different in the different soccer leagues.
+
+(@byleague) **Create a table that shows, for each league, the rate of red cards by skin color.  In this case, please use **
+
+```{r}
+# [ your code here ]
+```
+
+(@) **In words, what would you conclude from your response to @byleague?**
+
+[ your text here ]
+
+### Looking at subsets of the data, by position
+
+Imagine that after addressing this concern from the an ASA audience member, you are chating with a colleague about this project over coffee.  Your colleague thinks that leagues are not important, but that positions should be important.  That is the relationship between skin color and red card rate should be different for goalie, defenders, midfielders, and attackers.
+
+(@) **As a first step, create a new factor `position.type` that recodes the current position factor into four groups.  I recommend you do this will the function `mapvalues()` in `plyr`.  To show you how that function works, I'll create a new variable that stores the currency used by the league.country. (I realize that there is not much reason to want to know the currency used by the league, but just bear with me.)**
+
+```{r}
+soccer.data$currency <- plyr::mapvalues(soccer.data$league.country,
+                                        from=c("England", "France", "Germany", "Spain"), 
+                                        to=c("Pound", "Euro", "Euro", "Euro")) 
+```
+
+Notice that I'm not loading the whole `plyr` package because it can cause weird conflicts with `dplyr`.  Therefore, I call the function like this `plyr::mapvalues`
+
+(@) **Modify the above code to create a new factor called position.type which has four values: goalie, defenders, midfielders, and attackers.**
+
+```{r}
+# [ your code here ]
+```
+
+(@) **Optional Challenge: Create the factor we need using a different method, either from base R or from another package.**
+
+```{r}
+# [ your code here; optional ]
+```
+
+
+(@byposition) **Create a table that shows, for each position, the rate of red cards by skin color.  In this case, please use all forms of red cards.**
+
+```{r}
+# [ your code here ]
+```
+
+(@) ** In words, what would you conclude from your response to @byleague?**
+
+[ your text here ]
+
