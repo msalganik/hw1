@@ -10,7 +10,7 @@ output: html_document
 2+2
 ```
 
-## Set-up the soccer data
+### Set-up the soccer data
 Let's load in the soccer data and dplyr:
 ```{r}
 suppressPackageStartupMessages(library(dplyr))
@@ -20,7 +20,7 @@ soccer.data <- tbl_df(soccer.data)
 
 ### A robustness check 
 
-In lab, we calculated the rate of red cards for players of different skin tone.  Now, we are going to see how robust our conclusions were some choices that we made in the analysis.  In particular, it is important to know that in soccer there are actually two ways to get a red card: a direct red card and getting two yellow cards (which equals one red card).
+In lab, we calculated the rate of red cards for players of different skin tone.  Now, we are going to see how robust our conclusions were to some of the choices that we made in the analysis.  In particular, it is important to know that in soccer there are actually two ways to get a red card: a direct red card and getting two yellow cards (which equals one red card).
 
 (@directreds) **Create a table like the one were made in lab where the outcome of interest is rate of direct red cards.**
 
@@ -40,7 +40,7 @@ In lab, we calculated the rate of red cards for players of different skin tone. 
 
 ### Looking at subsets of the data, by country
 
-Imagine that you have presented these results at ASA, and an audience member speculated the relationship between skin tone and red cards would be different in the different soccer leagues.
+Imagine that you presented these results at ASA, and an audience member speculated the relationship between skin tone and red cards would be different in the different soccer leagues.
 
 (@byleague) **Create a table that shows, for each league, the rate of red cards by skin color.  In this case, please use **
 
@@ -85,7 +85,7 @@ Notice that I'm not loading the whole `plyr` package because it can cause weird 
 # [ your code here ]
 ```
 
-(@) ** In words, what would you conclude from your response to @byleague?**
+(@) **In words, what would you conclude from your response to @byleague?**
 
 [ your text here ]
 
