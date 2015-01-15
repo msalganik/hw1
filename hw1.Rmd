@@ -89,3 +89,110 @@ Notice that I'm not loading the whole `plyr` package because it can cause weird 
 
 [ your text here ]
 
+## Watch how this works with a different dataset: Gapminder
+
+Just to show you that this all works with different data, you will now do some analysis with the [Gapminder](http://www.gapminder.org/) data, as currated and cleaned by [Jenny Bryan](https://github.com/jennybc/gapminder).
+
+```{r}
+require(dplyr)
+load(url("http://www.princeton.edu/~mjs3/soc504_s2015/gapminder.RData"))
+gapminder <- tbl_df(gapminder)
+glimpse(gapminder)
+head(gapminder)
+tail(gapminder)
+```
+
+(@) **Is this data in third normal form?**
+
+[ yes / no ]
+
+(@) Explain:
+
+[ your text here ]
+
+(@) **Is this a sensible structure for data storage?**
+
+[ yes / no ]
+
+(@) **Is this a sensible structure for data analysis?**
+
+[ yes / no ]
+
+(@) **For each continent, show the mean GDP in each of the years in the data.**
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>%
+  summarise(mean(gdpPercap))
+```
+
+(@) **Which country had the highest GDP per captia in Africa in 1952?**  Note you don't need to produce a data.frame with a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+gapminder %>%
+  filter(continent=="Africa", year==1952) %>%
+  arrange(desc(gdpPercap)) %>%
+  select(country, gdpPercap)
+```
+
+(@) **Which country had the highest GDP (not GDP per captia) in any year in the data?**  Note you don't need to produce a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+gapminder %>%
+  mutate(gdp = gdpPercap * pop) %>%
+  arrange(desc(gdp)) %>%
+  select(country, year, gdp)
+```
+
+(@) **Which continent had the most variation in life expectancy in 2007?** Note you don't need to produce a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+gapminder %>%
+  filter(year=="2007") %>%
+  group_by(continent) %>%
+  summarise(life.exp.var = var(lifeExp))
+```
+
+(@openq) **Challenge problem: Create a question that will require you to use all 5 `dplyr` verbs: `filter`, `arrange`, `select`, `mutate`, and `summarise`.**
+
+[ your text here; optional ]
+
+(@) **Challenge problem: Now show the code to answer question @openq.**
+
+```{r}
+# your code here; optional
+```
+
+
+## More practice with data structures
+
+`R` comes with the dataset `ldeaths`, which records the monthly deaths from bronchitis, emphysema and asthma in the UK, 1974–1979.  For more information type "?ldeaths"
+
+(@) **Is this data tidy?**
+
+[ yes / no ]
+
+(@) **Explain**
+
+[ your text here ]
+
+`R` comes with the dataset `mtcars`, which shows fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models), as taken from the 1974 Motor Trend US magazine.  For more information type "?mtcars"
+
+(@) **Is this data tidy?**
+
+[ yes / no ]
+
+(@) **Explain**
+
+[ your text here ]
+
+`R` comes with the dataset `quakes`, which shows 1000 seismic events near Fiji.  For more information type "?quakes"
+
+(@) **Is this data tidy?**
+
+[ yes / no ]
+
+(@) **Explain**
+
+[ your text here ]
+
