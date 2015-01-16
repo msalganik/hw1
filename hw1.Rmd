@@ -198,3 +198,10 @@ gapminder %>%
 
 [ your text here ]
 
+#### This is helpful for debugging, please don't change it
+
+```{r}
+sessionInfo()
+```
+
+
