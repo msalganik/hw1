@@ -1,6 +1,6 @@
 ---
 title: "Homework 1: Manipulating data"
-author: "[your name here]"
+author: "Matthew Salganik"
 date: Due 2015-02-05
 output: html_document
 ---
