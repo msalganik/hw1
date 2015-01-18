@@ -5,6 +5,14 @@ date: Due 2015-02-05
 output: html_document
 ---
 
+Topics covered in this homework include:
+ 
+- dplyr and the five verbs
+- working with factors
+- third normal form
+- tidy data
+
+
 (@) **Please calculate 2+2 in the space below.**
 
 ```{r}
@@ -198,7 +206,7 @@ gapminder %>%
 
 [ your text here ]
 
-#### This is helpful for debugging, please don't change it
+#### The command below is helpful for debugging, please don't change it
 
 ```{r}
 sessionInfo()
